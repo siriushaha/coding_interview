@@ -6,9 +6,9 @@ output a list of times where all the coworkers are available.
 
 For example, say that we want to schedule a meeting with Jane, John, and Mary on Monday.
 
-Jane is busy from 9am - 10am, 12pm - 1pm, and 4pm - 5pm.
-John is busy from 9:30am - 11:00am and 3pm - 4pm
-Mary is busy from 3:30pm - 5pm.
+- Jane is busy from 9am - 10am, 12pm - 1pm, and 4pm - 5pm.
+- John is busy from 9:30am - 11:00am and 3pm - 4pm
+- Mary is busy from 3:30pm - 5pm.
 
 Based on that information, our calendar app should tell us that everyone is available:
 - 11:00am - 12:00pm
@@ -57,6 +57,7 @@ A list of users that our system is aware of. You can assume all the names are un
 they would be input as email addresses).
 
 `id`: An integer unique to the user
+
 `name`: The display name of the user - your program should accept these names as input.
 
 ### `events.json`
@@ -64,8 +65,11 @@ they would be input as email addresses).
 A dataset of all events on the calendars of all our users.
 
 `id`: An integer unique to the event
+
 `user_id`: A foreign key reference to a user
+
 `start_time`: The time the event begins
+
 `end_time`: The time the event ends
 
 
