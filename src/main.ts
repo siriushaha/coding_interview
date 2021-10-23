@@ -4,28 +4,13 @@ import { AvailableMap, Busys, IBusy } from "./interfaces/availability.ts";
 import { setup } from "./data/setup.ts";
 import { getAvailabilityFor } from "./services/availability.ts";
 
-// initialize maps of users, busy events and availability
-const handler = (e: Event): void => {
-  // console.log(`got ${e.type} event in event handler (main)`)
-  setup();
-};
-
-// window.addEventListener("load", handler);
-
-window.onload = (e: Event): void => {
-  console.log(`got ${e.type} event in onload function (main)`);
-  console.log("loading users and events");
-  console.log("create user and event map");
-  setup();
-};
-
 // Generate availability grouped by date for all users
 function generateAvailabilityForUsersByDate(
   name: string,
   dates: string[],
   availableMap: AvailableMap,
 ): void {
-  console.log(`Availability for users ${name}:`);
+  console.log(`\nAvailability for users ${name}:\n`);
   dates.forEach((date: string) => {
     const availabilityByDate = availableMap.get(date) as Busys;
     availabilityByDate.forEach((available: IBusy) => {
@@ -52,11 +37,11 @@ async function executeCli(): Promise<void> {
     })
     .parse(Deno.args);
   const { name, date } = options;
-
   const names: string[] = name.split(",");
   const dates: string[] = date.split(",");
 
-  console.log(names, dates);
+  setup();
+
   const availableMap: AvailableMap = getAvailabilityFor(names, dates);
   generateAvailabilityForUsersByDate(name, dates, availableMap);
 }
