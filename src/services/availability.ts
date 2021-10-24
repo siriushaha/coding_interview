@@ -10,7 +10,7 @@ import {
 } from "../interfaces/availability.ts";
 
 import {
-  convertTimeFromIntToString,
+  convertRecordFromIAvailableToIBusy,
   getMergedRange,
   isInBetween,
   isInRange,
@@ -138,7 +138,7 @@ export function getAvailabilityFor(
     availableMap.set(
       date,
       availables.map((available: IAvailable) =>
-        convertTimeFromIntToString(available)
+          convertRecordFromIAvailableToIBusy(available)
       ),
     );
   });
