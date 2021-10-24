@@ -32,14 +32,14 @@ export function convertTimeToString(time: number): string {
 }
 
 // Convert record from IBusy interface to IAvailable interface
-export function convertTimeFromStringToInt(time: IBusy): IAvailable {
+export function convertRecordFromIBusyToIAvailable(time: IBusy): IAvailable {
   const start: number = convertTimeToInt(time.start);
   const end: number = convertTimeToInt(time.end);
   return { start, end };
 }
 
 // Convert record from IAvailable interface to IBusy format
-export function convertTimeFromIntToString(time: IAvailable): IBusy {
+export function convertRecordFromIAvailableToIBusy(time: IAvailable): IBusy {
   const start: string = convertTimeToString(time.start);
   const end: string = convertTimeToString(time.end);
   return { start, end };
@@ -100,6 +100,6 @@ export function getAvailabilityByDate(busyByDate: Busys): Availables {
     }
   });
   return available.map((available: IBusy) =>
-    convertTimeFromStringToInt(available)
+    convertRecordFromIBusyToIAvailable(available)
   );
 }
