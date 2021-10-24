@@ -339,9 +339,11 @@ Availability for users Maggie,Joe,Jordan:
 
 - Copy OS version of `availability` executable, `users.json` and `events.json` data files to your executable path 
 
-- cd `executable path`
+- cd `executable path` or bin
 
 - Run `OS version of availability -n Maggie,Joe,Jordan`
+
+in x68 Mac: `./availability.x86_mac -n Maggie,Joe,Jordan`
 
 ```angular2html
 Availability for users Maggie,Joe,Jordan:
@@ -360,6 +362,8 @@ Availability for users Maggie,Joe,Jordan:
 ```
 
 - Run `OS version of availability`
+
+in x68 Mac: `./availability.x86_mac`
 
 ```angular2html
 
