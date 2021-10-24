@@ -1,4 +1,4 @@
-import { Command } from "https://deno.land/x/cliffy@v0.19.6/command/mod.ts";
+import { Command } from "./deps/deps.ts";
 
 import { AvailableMap, Busys, IBusy } from "./interfaces/availability.ts";
 import { setup } from "./data/setup.ts";

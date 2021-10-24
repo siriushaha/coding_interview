@@ -1,4 +1,4 @@
-import { readJsonSync } from "https://deno.land/x/jsonfile/mod.ts";
+import { readJsonSync } from "../deps/deps.ts";
 
 import { IBusy, IEvent, IUser } from "../interfaces/availability.ts";
 
