@@ -45,7 +45,7 @@ export function convertRecordFromIAvailableToIBusy(time: IAvailable): IBusy {
   return { start, end };
 }
 
-// Determine range that can be merged between merged availabity and availabity by a user
+// Determine range that can be merged between merged availability and availability by a user
 export function getMergedRange(
   availables: Availables,
   availableByUser: Availables,
@@ -66,7 +66,7 @@ export function isInRange(a: IAvailable, b: IAvailable): boolean {
 }
 
 // Determine whether a is between start and end of availability
-export function isInBetween(a: number, availableTime: IAvailable): boolean {
+export function isBetween(a: number, availableTime: IAvailable): boolean {
   return availableTime.start <= a && a <= availableTime.end;
 }
 

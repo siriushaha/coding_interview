@@ -12,7 +12,7 @@ import {
 import {
   convertRecordFromIAvailableToIBusy,
   getMergedRange,
-  isInBetween,
+  isBetween,
   isInRange,
 } from "../lib/library.ts";
 
@@ -36,7 +36,7 @@ function adjustAvailabilityByRange(
   return adjustedTimes;
 }
 
-// Algorithm to merge availabity by user into common avaibility
+// Algorithm to merge availability by user into common availability
 function mergeAvailabilityByUserToAvailables(
   availables: Availables,
   availablesByUser: Availables,
@@ -86,7 +86,7 @@ function mergeAvailabilityByUserToAvailables(
         mergedAvailables.push(lastMerged);
         // console.log("3", lastMerged)
       } else {
-        if (isInBetween(lastAvailableByUser.end, available)) {
+        if (isBetween(lastAvailableByUser.end, available)) {
           lastMerged = {
             start: available.start,
             end: lastAvailableByUser.end,

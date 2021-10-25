@@ -174,7 +174,7 @@ Utility functions used in data/setup.ts and services/availability.ts:
 
 `isInRange`: function to determine whether time block is contained within another time block
 
-`isInBetween`: function to determine whether time is between start and end of a time block
+`isBetween`: function to determine whether time is between start and end of a time block
 
 `getAvailabilityByDate`: function to generate list of IAvailable blocks from list of IBusy blocks based on working hours defined in workingHours variable in data/data.ts
 
@@ -242,7 +242,7 @@ This is the main entry point of this script
       else if isInRange(availableByUser, available)
         lastMerged = availableByUser
         append lastMerged to mergedAvailables
-      else if isInBetween(lastAvailableByUser.end, available)
+      else if isBetween(lastAvailableByUser.end, available)
         lastMerged = {
           start: available.start,
           end: lastAvailableByUser.end
