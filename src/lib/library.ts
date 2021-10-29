@@ -72,12 +72,12 @@ export function isBetween(a: number, availableTime: IAvailable): boolean {
 
 // Create a list of availability from list of busy times for given date based on configured working hours
 export function getAvailabilityByDate(busyByDate: Busys): Availables {
-  const available: Busys = [];
+  const availables: Busys = [];
   let start: string;
   const workingStart = convertTimeToInt(workingHours.start);
   const workingEnd = convertTimeToInt(workingHours.end);
   const addToAvailable = (start: string, end: string): void => {
-    available.push({ start, end });
+    availables.push({ start, end });
   };
   busyByDate.forEach((busy: IBusy, i: number, array: Busys) => {
     const last = array.length - 1;
@@ -99,7 +99,7 @@ export function getAvailabilityByDate(busyByDate: Busys): Availables {
       }
     }
   });
-  return available.map((available: IBusy) =>
+  return availables.map((available: IBusy) =>
     convertRecordFromIBusyToIAvailable(available)
   );
 }
