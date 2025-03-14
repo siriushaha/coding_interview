@@ -1,8 +1,8 @@
-import { Command } from "./deps/deps.ts";
+import { Command } from '@cliffy/command';
 
-import { AvailableMap, Busys, IBusy } from "./interfaces/availability.ts";
-import { setup } from "./data/setup.ts";
-import { getAvailabilityFor } from "./services/availability.ts";
+import { AvailableMap, Busys, IBusy } from './interfaces/availability.ts';
+import { setup } from './data/setup.ts';
+import { getAvailabilityFor } from './services/availability.ts';
 
 // Generate availability grouped by date for all users
 function generateAvailabilityForUsersByDate(
@@ -43,9 +43,10 @@ async function executeCli(): Promise<void> {
   setup();
 
   const availableMap: AvailableMap = getAvailabilityFor(names, dates);
-  generateAvailabilityForUsersByDate(name, dates, availableMap);
+  generateAvailabilityForUsersByDate(name as string, dates, availableMap);
 }
 
+// @ts-ignore
 if (import.meta.main) {
   await executeCli();
 }

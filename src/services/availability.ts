@@ -118,7 +118,6 @@ export function getAvailabilityFor(
       const eventByTypeMap = eventByDateMap.get(date) as EventByTypeMap;
       // const busyByDate = eventByTypeMap.get("busy") as BusyTimes
       // console.log(busyByDate)
-      // @ts-ignore
       const availablesByDate = eventByTypeMap.get(
         EventType.AVAILABLE,
       ) as Availables;

@@ -49,7 +49,7 @@ function loadBusyMap(): void {
 
 // load map of availabity from map of busy events
 function loadAvailableMap(): void {
-  userMap.forEach((value, key) => {
+  userMap.forEach((value) => {
     // console.log(`User is ${key}`)
     // @ts-ignore
     const eventsByUserMap = eventMap.get(value);
