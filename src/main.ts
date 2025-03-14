@@ -1,8 +1,8 @@
-import { Command } from '@cliffy/command';
+import { Command } from "@cliffy/command";
 
-import { AvailableMap, Busys, IBusy } from './interfaces/availability.ts';
-import { setup } from './data/setup.ts';
-import { getAvailabilityFor } from './services/availability.ts';
+import { AvailableMap, Busys, IBusy } from "./interfaces/availability.ts";
+import { setup } from "./data/setup.ts";
+import { getAvailabilityFor } from "./services/availability.ts";
 
 // Generate availability grouped by date for all users
 function generateAvailabilityForUsersByDate(

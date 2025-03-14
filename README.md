@@ -90,19 +90,23 @@ A dataset of all events on the calendars of all our users.
 
 ## Language / Framework
 
-Deno at https://deno.land/ is a modern and secure runtime of Javascript and Typescript with feature to generate a self-contained executable. Deno is considered as the new generation of Node.
+Deno at https://deno.land/ is a modern and secure runtime of Javascript and
+Typescript with feature to generate a self-contained executable. Deno is
+considered as the new generation of Node.
 
-The solution of this coding challenge is implemented in Deno and Typescript to generate a self-contained executable availability.
+The solution of this coding challenge is implemented in Deno and Typescript to
+generate a self-contained executable availability.
 
 ## Approach to Problem
 
 ### Data and File Structures
 
-Map is used to load data for users and events from users.json and events.json, and maintain availability for all users grouped by date.
+Map is used to load data for users and events from users.json and events.json,
+and maintain availability for all users grouped by date.
 
 #### interfaces/availability.ts
 
-- interfaces: 
+- interfaces:
 
 `IUser`: record from users.json
 
@@ -112,13 +116,13 @@ Map is used to load data for users and events from users.json and events.json, a
 
 `IAvailable`: record to keep track of available time
 
-- types and enums: 
+- types and enums:
 
 `EventType`: enum to represent BUSY and AVAILABLE event type
 
-`Busys`: list of IBusy blocks per day 
+`Busys`: list of IBusy blocks per day
 
-`Availables`: list of IAvailable blocks per day 
+`Availables`: list of IAvailable blocks per day
 
 `Time`: record of either IBusy or IAvailable block
 
@@ -126,25 +130,30 @@ Map is used to load data for users and events from users.json and events.json, a
 
 `UserMap`: a map of user ids by name
 
-`EventByTypeMap`: a map of Busys or Availables blocks grouped by BUSY or AVAILABLE event type
+`EventByTypeMap`: a map of Busys or Availables blocks grouped by BUSY or
+AVAILABLE event type
 
 `EventByDateMap`: a map of EventType maps grouped by date
 
 `EventByUserMap`: a map of EventByDateMap maps grouped by user id
 
-`AvailableMap`: a map of available blocks grouped by date for a given set of users
+`AvailableMap`: a map of available blocks grouped by date for a given set of
+users
 
 - global variables:
 
 `userMap`: global variable to maintain a map of UserMap type
 
-`eventMap`: global variable to maintain a map of EventByDateMap maps grouped by user ids
+`eventMap`: global variable to maintain a map of EventByDateMap maps grouped by
+user ids
 
 #### data/data.js
 
-`users`: global variable containing list of IUser records read from users.json file
+`users`: global variable containing list of IUser records read from users.json
+file
 
-`events`: global variable containing list of IEvent record read from events.json file
+`events`: global variable containing list of IEvent record read from events.json
+file
 
 `workingHours`: configurable variable defined for working hours
 
@@ -152,9 +161,11 @@ Map is used to load data for users and events from users.json and events.json, a
 
 `loadUserMap`: function to create userMap from users variable
 
-`loadBusyMap`: function to create a EventMap map grouped by user ids containing EventByDateMap maps grouped by date which contain list of IBusy records 
+`loadBusyMap`: function to create a EventMap map grouped by user ids containing
+EventByDateMap maps grouped by date which contain list of IBusy records
 
-`loadAvailableMap`: function to create a list of IAvailable blocks grouped by date from a list of IBusy records stored in a EventByTypeMap map 
+`loadAvailableMap`: function to create a list of IAvailable blocks grouped by
+date from a list of IBusy records stored in a EventByTypeMap map
 
 #### lib/library.ts
 
@@ -162,35 +173,51 @@ Utility functions used in data/setup.ts and services/availability.ts:
 
 `parseEvent`: function to parse IEvent record to IBusy record
 
-`convertTimeToInt`: function to convert time in "HH:MM" format into numeric format ranging from 0 to 2400
+`convertTimeToInt`: function to convert time in "HH:MM" format into numeric
+format ranging from 0 to 2400
 
-`convertTimeToString`: function to convert time in numeric format ranging from 0 to 2400 to "HH:MM" format 
+`convertTimeToString`: function to convert time in numeric format ranging from 0
+to 2400 to "HH:MM" format
 
-`convertRecordFromIBusyToIAvailable`: function to convert record from IBusy interface to IAvailable interface
+`convertRecordFromIBusyToIAvailable`: function to convert record from IBusy
+interface to IAvailable interface
 
-`convertRecordFromIAvailableToIBusy`: function to convert record from IAvailable interface to IBusy interface
+`convertRecordFromIAvailableToIBusy`: function to convert record from IAvailable
+interface to IBusy interface
 
-`getMergedRange`: function to determine range that can be merged between merged availability and availability by a user
+`getMergedRange`: function to determine range that can be merged between merged
+availability and availability by a user
 
-`isInRange`: function to determine whether time block is contained within another time block
+`isInRange`: function to determine whether time block is contained within
+another time block
 
-`isBetween`: function to determine whether time is between start and end of a time block
+`isBetween`: function to determine whether time is between start and end of a
+time block
 
-`getAvailabilityByDate`: function to generate list of IAvailable blocks from list of IBusy blocks based on working hours defined in workingHours variable in data/data.ts
+`getAvailabilityByDate`: function to generate list of IAvailable blocks from
+list of IBusy blocks based on working hours defined in workingHours variable in
+data/data.ts
 
 #### services/availabity.ts
 
-`adjustAvailabilityByRange`: function to keep only a list of user availability blocks that are within merged range
+`adjustAvailabilityByRange`: function to keep only a list of user availability
+blocks that are within merged range
 
-`mergeAvailabilityByUserToAvailables`: function to merge list of user availability blocks adjusted by adjustAvailabilityByRange into existing availability
+`mergeAvailabilityByUserToAvailables`: function to merge list of user
+availability blocks adjusted by adjustAvailabilityByRange into existing
+availability
 
-`getAvailabilityFor`: exported function to determine availability for a given set of users on specific dates
+`getAvailabilityFor`: exported function to determine availability for a given
+set of users on specific dates
 
 #### main.ts
 
-`generateAvailabilityForUsersByDate`: function to print out all availability for given set of users by specified dates
+`generateAvailabilityForUsersByDate`: function to print out all availability for
+given set of users by specified dates
 
-`executeCli`: function to get name and date as command line parameters, get all availability for users specified by name and date parameters and print out all availability to the console output
+`executeCli`: function to get name and date as command line parameters, get all
+availability for users specified by name and date parameters and print out all
+availability to the console output
 
 This is the main entry point of this script
 
@@ -250,13 +277,15 @@ This is the main entry point of this script
         append lastMerged to mergedAvailables
   return mergedAvailables
 ```
-Note that 
-1. time in "HH:MM" format is converted into numberic format ranging from 0 to 2400 so that time in numeric format can be compared in determining availability
+
+Note that
+
+1. time in "HH:MM" format is converted into numberic format ranging from 0 to
+   2400 so that time in numeric format can be compared in determining
+   availability
 2. Map is used for search by user, date, event type
 3. Working hours is configurable
 4. Events can start or end on any minute
-
-
 
 ## Install Deno
 
@@ -276,7 +305,8 @@ Note that
 
 ### For Windows
 
-- deno compile --target x86_64-pc-windows-msvc -o bin/availability --allow-read src/main.ts
+- deno compile --target x86_64-pc-windows-msvc -o bin/availability --allow-read
+  src/main.ts
 
 ### For Linux
 
@@ -289,7 +319,6 @@ Note that
 ### For aarch Mac
 
 - `deno compile --target aarch64-apple-darwin -o bin/availability.aarch_mac --allow-read src/main.ts`
-
 
 ## Run
 
@@ -316,7 +345,6 @@ Availability for users Maggie,Joe,Jordan:
 - deno run --allow-read src/main.ts
 
 ```angular2html
-
   Usage:   availability
   Version: 1.0.0       
 
@@ -332,12 +360,12 @@ Availability for users Maggie,Joe,Jordan:
     -d, --date     <date>  - list of dates separated by commas          (Default: "2021-07-05,2021-07-06,2021-07-07")
 
   error: Missing required option "--name".
-
 ```
 
 ### Self-contained single executable `availability` in your OS
 
-- Copy OS version of `availability` executable, `users.json` and `events.json` data files to your executable path 
+- Copy OS version of `availability` executable, `users.json` and `events.json`
+  data files to your executable path
 
 - cd `executable path` or bin
 
@@ -366,7 +394,6 @@ Availability for users Maggie,Joe,Jordan:
 in x68 Mac: `./availability.x86_mac`
 
 ```angular2html
-
   Usage:   availability
   Version: 1.0.0       
 
@@ -382,5 +409,4 @@ in x68 Mac: `./availability.x86_mac`
     -d, --date     <date>  - list of dates separated by commas          (Default: "2021-07-05,2021-07-06,2021-07-07")
 
   error: Missing required option "--name".
-
 ```

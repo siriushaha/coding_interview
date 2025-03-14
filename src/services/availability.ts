@@ -137,7 +137,7 @@ export function getAvailabilityFor(
     availableMap.set(
       date,
       availables.map((available: IAvailable) =>
-          convertRecordFromIAvailableToIBusy(available)
+        convertRecordFromIAvailableToIBusy(available)
       ),
     );
   });
